@@ -1,0 +1,444 @@
+﻿:root {
+    --width: 700px;
+    --top-right: 625px;
+    --img-anim: 1s;
+    --div-anim: 1s;
+    --filter-div: brightness(0.20) grayscale(80%);
+}
+body::before {
+    content: "";
+    background-color: #000000;
+    /*background-image: url("../resources/bg3.png"); 
+    background-position: 950px 100px;
+    background-size: 30% 20%;*/
+
+    position: fixed;
+    background-repeat: no-repeat;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -30;
+}
+body {
+    overflow: hidden;
+}
+.border {
+}
+
+.contents {
+    opacity: 1;
+    transition: opacity 1s;
+}
+.character_content {
+    opacity: 0;
+    transition: opacity 0s;
+    position: absolute;
+    z-index: 60;
+}
+.jp_container {
+    width: 400px;
+    height: 150px;
+    position: absolute;
+    top: 100px;
+    left: 975px;
+    overflow: hidden;
+    opacity: 0;
+    z-index: -20;
+    /*animation: fade_up 5s;*/
+}
+.jp {
+    width: 400px;
+    height: auto;
+}
+.en_container {
+    width: 400px;
+    height: 150px;
+    position: absolute;
+    top: 200px;
+    left: 975px;
+    overflow: hidden;
+    opacity: 0;
+    z-index: -20;
+    /*animation: fade_up 8s;*/
+}
+.en {
+    width: 200px;
+    height: 100px;
+    position: absolute;
+    top: 0px;
+    left: 100px;
+    filter: brightness(1.5);
+}
+.author {
+    width: 75px;
+    height: 75px;
+    position: absolute;
+    top: 655px;
+    left: 1475px;
+    /*border: solid 2px;
+    border-color: red;*/
+    overflow: visible;
+    z-index: -15;
+    transform: rotate(-30deg);
+}
+.gege {
+    width: 75px;
+    height: 75px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    animation: peek 10s alternate-reverse infinite;
+}
+
+.parag {
+    font-family: Papyrus, fantasy;
+    font-size: 17px;
+}
+.p1 {
+    width: 400px;
+    height: 400px;
+    position: absolute;
+    top: 300px;
+    left: 975px;
+    text-align: center;
+    color: white;
+    opacity: 0;
+    z-index: -10;
+    /*animation: fade_up 10s;*/
+}
+.gojo_content {
+    width: 600px;
+    height: 400px;
+    position: absolute;
+    top: 510px;
+    left: 25px;
+    text-align: center;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    color: white;
+}
+.yuji_content {
+    width: 600px;
+    height: 400px;
+    position: absolute;
+    top: 510px;
+    left: 25px;
+    text-align: center;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    color: white;
+}
+.fushiguro_content {
+    width: 600px;
+    height: 400px;
+    position: absolute;
+    top: 510px;
+    left: 25px;
+    text-align: center;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    color: white;
+}
+
+.character_container {
+    width: 250px;
+    height: 700px;
+    position: absolute;
+    overflow: hidden;
+    clip-path: polygon(75px 0px, 250px 0, 175px 700px, 0 700px);
+    filter: var(--filter-div);
+    transition: transform 1s, filter 0.5s;
+}
+.gojo_container {
+    z-index: 30;
+    filter: brightness(0.20) grayscale(60%);
+}
+.yuji_container {
+    z-index: 20;
+    filter: brightness(0.20) grayscale(90%);
+    left: 200px;
+}
+.fushiguro_container {
+    z-index: 10;
+    filter: brightness(0.20) grayscale(70%);
+    left: 393px;
+}
+.nobara_container {
+    z-index: 0;
+    left: 585px;
+}
+
+.character {
+    width: auto;
+    height: 700px;
+    position: absolute;
+    top: 0px;
+    transition: transform 2s;
+}
+.gojo {
+    left: -350px;
+}
+.yuji {
+    transform: scale(1.3);
+    top: -100px;
+    left: -440px;
+}
+.fushiguro {
+    transform: scale(2.65);
+    top: 540px;
+    left: -100px;
+}
+.nobara {
+    transform: scale(1.3);
+    top: 10px;
+    left: -110px;
+}
+
+
+@keyframes grow_div {
+    from {
+        clip-path: polygon(75px 0px, 250px 0, 175px 700px, 0 700px);
+        width: 250px;
+        /*filter: var(--filter-div);*/
+    }
+    to {
+        clip-path: polygon(75px 0px, var(--width) 0, var(--top-right) 700px, 0 700px);
+        width: var(--width);
+        /*filter: brightness(1) grayscale(0%);*/
+    }
+}
+@keyframes shrink_div {
+    from {
+        clip-path: polygon(75px 0px, var(--width) 0, var(--top-right) 700px, 0 700px);
+        width: var(--width);
+        filter: brightness(1) grayscale(0%);
+    }
+    to {
+        clip-path: polygon(75px 0px, 250px 0, 175px 700px, 0 700px);
+        width: 250px;
+        filter: var(--filter-div);
+    }
+}
+@keyframes fade_up {
+    0% {
+        opacity: 0;
+        transform: translateY(-30px) scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0px) scale(1);
+    }
+}
+@keyframes peek {
+    0% {
+        transform: translateX(0px) translateY(0px);
+    }
+    100% {
+        transform: translateX(75px) translateY(75px);
+    }
+}
+
+.content1.fade_out{
+    opacity: 0;
+    transition: opacity 1s;
+}
+.content1.start .jp_container {
+    animation: fade_up 5s forwards;
+}
+.content1.start .en_container {
+    animation: fade_up 8s forwards;
+}
+.content1.start .p1 {
+    animation: fade_up 10s forwards;
+}
+.character_container.fade_in .character_content{
+    opacity: 1;
+    transition: opacity 1s;
+}
+
+.character_container:hover {
+    filter: brightness(1) grayscale(0%);
+    transition: filter 0.5s;
+}
+.character_container.play-animation {
+    animation: grow_div var(--div-anim) forwards;
+    filter: brightness(1) grayscale(0%);
+    transition: filter var(--div-anim);
+}
+.character_container.play-animation-reverse {
+    animation: shrink_div var(--div-anim) forwards;
+}
+
+.character_container.play-animation .gojo {
+    transform: translateX(250px);
+    transition: transform var(--img-anim) ;
+}
+.character_container.play-animation .yuji {
+    transform: translateX(240px) scale(1.3);
+    transition: transform var(--img-anim);
+}
+.character_container.play-animation .fushiguro {
+    transform: translateX(200px) scale(2.65);
+    transition: transform var(--img-anim);
+}
+.character_container.play-animation .nobara {
+    transform: translateX(210px) scale(1.3);
+    transition: transform var(--img-anim);
+}
+
+.character_container.play-animation-reverse .gojo {
+    transform: translateX(0px);
+    transition: transform var(--img-anim);
+}
+.character_container.play-animation-reverse .yuji {
+    transform: translateX(0px) scale(1.3);
+    transition: transform var(--img-anim);
+}
+.character_container.play-animation-reverse .fushiguro {
+    transform: translateX(0px) scale(2.65);
+    transition: transform var(--img-anim);
+}
+.character_container.play-animation-reverse .nobara {
+    transform: translateX(0px) scale(1.3);
+    transition: transform var(--img-anim);
+}
+
+.gojo_container.gojo_translate {
+    transform: translateX(0px);
+    transition: transform var(--div-anim);
+}
+.gojo_container.gojo_reverse {
+    transform: translateX(0px);
+    transition: transform var(--div-anim);
+}
+.yuji_container.gojo_translate {
+    transform: translateX(450px);
+    transition: transform var(--div-anim);
+}
+.yuji_container.gojo_reverse {
+    transform: translateX(0px);
+    transition: transform var(--div-anim);
+}
+.fushiguro_container.gojo_translate {
+    transform: translateX(450px);
+    transition: transform var(--div-anim);
+}
+.fushiguro_container.gojo_reverse {
+    transform: translateX(0px);
+    transition: transform var(--div-anim);
+}
+.nobara_container.gojo_translate {
+    transform: translateX(450px);
+    transition: transform var(--div-anim);
+}
+.nobara_container.gojo_reverse {
+    transform: translateX(0px);
+    transition: transform var(--div-anim);
+}
+
+.yuji_container.yuji_translate {
+    transform: translateX(-195px);
+    transition: transform var(--div-anim);
+    z-index: 50;
+}
+.yuji_container.yuji_reverse {
+    transform: translateX(0px);
+    transition: transform var(--div-anim);
+    z-index: 50;
+}
+.gojo_container.yuji_translate {
+    transform: translateX(640px);
+    transition: transform var(--div-anim);
+}
+.gojo_container.yuji_reverse {
+    transform: translateX(0px);
+    transition: transform var(--div-anim);
+}
+.fushiguro_container.yuji_translate {
+    transform: translateX(450px);
+    transition: transform var(--div-anim);
+}
+.fushiguro_container.yuji_reverse {
+    transform: translateX(0px);
+    transition: transform var(--div-anim);
+}
+.nobara_container.yuji_translate {
+    transform: translateX(450px);
+    transition: transform var(--div-anim);
+}
+.nobara_container.yuji_reverse {
+    transform: translateX(0px);
+    transition: transform var(--div-anim);
+}
+
+.fushiguro_container.fushiguro_translate {
+    transform: translateX(-385px);
+    transition: transform var(--div-anim);
+    z-index: 50;
+}
+.fushiguro_container.fushiguro_reverse {
+    transform: translateX(0px);
+    transition: transform var(--div-anim);
+    z-index: 50;
+}
+.gojo_container.fushiguro_translate {
+    transform: translateX(640px);
+    transition: transform var(--div-anim);
+}
+.gojo_container.fushiguro_reverse {
+    transform: translateX(0px);
+    transition: transform var(--div-anim);
+}
+.yuji_container.fushiguro_translate {
+    transform: translateX(640px);
+    transition: transform var(--div-anim);
+}
+.yuji_container.fushiguro_reverse {
+    transform: translateX(0px);
+    transition: transform var(--div-anim);
+}
+.nobara_container.fushiguro_translate {
+    transform: translateX(450px);
+    transition: transform var(--div-anim);
+}
+.nobara_container.fushiguro_reverse {
+    transform: translateX(0px);
+    transition: transform var(--div-anim);
+}
+
+.nobara_container.nobara_translate {
+    transform: translateX(-580px);
+    transition: transform var(--div-anim);
+    z-index: 50;
+}
+.nobara_container.nobara_reverse {
+    transform: translateX(0px);
+    transition: transform var(--div-anim);
+    z-index: 50;
+}
+.gojo_container.nobara_translate {
+    transform: translateX(640px);
+    transition: transform var(--div-anim);
+}
+.gojo_container.nobara_reverse {
+    transform: translateX(0px);
+    transition: transform var(--div-anim);
+}
+.yuji_container.nobara_translate {
+    transform: translateX(640px);
+    transition: transform var(--div-anim);
+}
+.yuji_container.nobara_reverse {
+    transform: translateX(0px);
+    transition: transform var(--div-anim);
+}
+.fushiguro_container.nobara_translate {
+    transform: translateX(640px);
+    transition: transform var(--div-anim);
+}
+.fushiguro_container.nobara_reverse {
+    transform: translateX(0px);
+    transition: transform var(--div-anim);
+}
+
+
+
+
